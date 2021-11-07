@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* ------------------------------------------------------ */
+/*                    Custom Properties                   */
+/* ------------------------------------------------------ */
+:root {
+    /* ----------------------- Colors ----------------------- */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-body-bg: hsl(240, 78%, 98%);
+    --clr-gray: hsl(234, 14%, 74%);
+    --clr-card-text: hsl(233, 13%, 49%);
+    --clr-purple: hsl(236, 72%, 70%);
+    --clr-price: hsl(232, 13%, 33%);
+
+    --gradient: hsl(236, 72%, 79%), hsl(237, 63%, 64%);
+
+    /* -------------------- Border Radii -------------------- */
+    --br-sm: .375rem;
+    --br-lg: .625rem;
+    --br-pill: 100vmax;
+
+    --outline: 2px dashed;
+
+    --anim-duration: 200ms;
+}
+
+/* ------------------------------------------------------ */
+/*                 Resets & Global Styles                 */
+/* ------------------------------------------------------ */
+.sr-only {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+* { box-sizing: border-box }
+
+body,
+h1, h2, p { margin: 0; }
+
+body {
+    display: grid;
+    align-content: center;
+    min-height: 100vh;
+    font: .9375rem/1.25 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 4rem clamp(1.5rem, 6vw, 3rem) 4.4375rem;
+    color: var(--clr-card-text);
+    background: 
+        url('images/bg-top.svg') top -2.25rem right -12.1875rem no-repeat,
+        url('images/bg-bottom.svg') bottom left no-repeat 
+        var(--clr-body-bg);
+}
+
+/* ------------------ Custom Scrollbar ------------------ */
+body::-webkit-scrollbar { width: 1rem; }
+
+body::-webkit-scrollbar-track {
+    border-radius: var(--br-pill);
+    margin-block: .125rem;
+    background: var(--clr-white);
+}
+
+body::-webkit-scrollbar-thumb {
+    border: .2rem solid transparent;
+    border-radius: var(--br-pill);
+    background: var(--clr-gray) content-box;
+}
+
+/* ------------------------------------------------------ */
+/*              Page Title & Frequency Toggle             */
+/* ------------------------------------------------------ */
+.page-title {
+    font-size: 1.9375rem;
+    letter-spacing: .02em;
+    margin-bottom: 2.5rem;
+}
+
+.frequency {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0px, 12vw - 2rem, .75rem);
+    margin-bottom: 5rem;
+}
+
+.frequency-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: .1em .75em;
+    color: var(--clr-gray);
+    cursor: pointer;
+    transition: color var(--anim-duration);
+}
+
+.frequency-label:hover,
+[type="radio"]:focus + .frequency-label { color: var(--clr-purple); }
+
+[type="radio"]:focus-visible + .frequency-label {
+    outline: var(--outline) var(--clr-gray);
+    outline-offset: -4px;
+}
+
+/* ------------------ Frequency Toggle ------------------ */
+.frequency-toggle {
+    --border-width: .25rem;
+    --width: max(44px, 3.5rem);
+    position: relative;
+    display: inline-flex;
+    width: var(--width);
+    height: calc(var(--width) / 1.75); /* 'aspect-ratio' didn't work in Safari */
+    border: var(--border-width) solid transparent;
+    border-radius: var(--br-pill);
+    background: linear-gradient(to right, var(--gradient)) border-box;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity var(--anim-duration);
+}
+
+/* Inner circle of toggle */
+.frequency-toggle:before {
+    content: '';
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: inherit;
+    background: var(--clr-white);
+}
+
+/* Extend clickable area of toggle for accessibility */
+.frequency-toggle:after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: max(44px, calc(100% + 2 * var(--border-width)));
+    height: max(44px, calc(100% + 2 * var(--border-width)));
+    border-radius: inherit;
+}
+
+/* Hover state for toggle */
+.frequency-toggle:hover { opacity: .7; }
+
+/* 'Move' styles added with JS to move the inner circle */
+.frequency-toggle.move { justify-content: flex-end; }
+
+/* ------------------------------------------------------ */
+/*                          Cards                         */
+/* ------------------------------------------------------ */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.0625rem;
+}
+
+.card {
+    flex: 100%;
+    max-width: 21.875rem;
+    padding: 2.0625rem 1.8125rem 1.9375rem;
+    border-radius: var(--br-lg);
+    box-shadow: 0 1rem 1rem hsla(236, 72%, 70%, .2);
+    background: var(--clr-white);
+}
+
+.card-title {
+    font-size: 1.125rem;
+    margin-bottom: 1.125rem;
+}
+
+.price {
+    font-size: clamp(2rem, 33vw - 3rem, 4.5rem);
+    letter-spacing: -.03125em;
+    margin-bottom: 1.4375rem;
+    color: var(--clr-price);
+}
+
+/* Dollar sign */
+.price::first-letter {
+    font-size: .5625em;
+    vertical-align: .25em;
+    margin-right: .1875em;
+}
+
+.perk {
+    padding: 1rem 1rem 1.0625rem;
+    border-bottom: 1px solid var(--clr-gray);
+}
+
+.perk-storage { border-top: 1px solid var(--clr-gray); }
+
+/* ----------------------- Buttons ----------------------- */
+.btn {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    min-height: 44px; /* Accessbility requirement */
+    font-size: .75rem;
+    letter-spacing: .1875em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em 3em;
+    border: 1px solid transparent;
+    border-radius: var(--br-sm);
+    margin-top: 2rem;
+    color: var(--clr-white);
+    background: linear-gradient(to right, var(--gradient)) border-box;
+    transition: color var(--anim-duration);
+}
+
+/* Hover state */
+.btn::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 1px var(--clr-price);
+    background: var(--clr-white);
+    opacity: 0;
+    transition: opacity var(--anim-duration);
+}
+
+.btn:hover { color: var(--clr-purple); }
+
+.btn:hover::after { opacity: 1; }
+
+/* Focus state */
+.btn:focus-visible {
+    outline: var(--outline) var(--clr-card-text);
+    outline-offset: 2px;
+}
+
+/* -------------------- Special Card -------------------- */
+.card-special {
+    color: var(--clr-white);
+    background: linear-gradient(to bottom, var(--gradient));
+}
+
+.card-special > .price { color: var(--clr-white); }
+
+.card-special > .btn {
+    color: var(--clr-purple);
+    background: var(--clr-white);
+    transition: background var(--anim-duration);
+}
+
+.card-special > .btn:focus-visible { outline-color: var(--clr-body-bg); }
+
+.card-special > .btn::after {
+    box-shadow: 0 0 0 1px var(--clr-white);
+    background: transparent;
+}
+
+.card-special > .btn:hover {
+    color: var(--clr-white);
+    background: transparent;
+}
+
+/* ------------------------------------------------------ */
+/*                     Large Viewport                     */
+/* ------------------------------------------------------ */
+@media only screen and (min-width: 75em) {
+    body {
+        padding: 3rem 3rem 5.125rem;
+        background: url('images/bg-top.svg') no-repeat top right,
+                    url('images/bg-bottom.svg') no-repeat bottom left
+                    var(--clr-body-bg);
+    }
+
+    .page-title { margin-bottom: 2.125rem; }
+
+    .frequency { margin-bottom: 3.6875rem; }
+
+    .cards { gap: 0; }
+
+    .card-special { padding-block: 3.625rem 3.375rem; }
+}

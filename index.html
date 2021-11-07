@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="main.css">
+
+    <title>Frontend Mentor | [Challenge Name Here]</title>
+
+  </head>
+
+  <body>
+
+    <header>
+
+      <h1 class="page-title">Our Pricing</h1>
+
+      <div class="frequency">
+        <input 
+          class="sr-only"
+          type="radio"
+          id="annually"
+          name="frequency"
+          value="annually">
+        <label class="frequency-label" for="annually">Annually</label>
+
+        <span class="frequency-toggle" aria-hidden="true"></span>
+
+        <input 
+          class="sr-only"
+          type="radio"
+          id="monthly"
+          name="frequency"
+          value="monthly">
+        <label class="frequency-label" for="monthly">Monthly</label> 
+      </div>
+         
+
+    </header>
+
+    <main class="cards">
+
+      <article class="card">
+        <h2 class="card-title">Basic</h2>
+        <p class="price" id="basic">$199.99</p>
+        <p class="perk perk-storage">500 GB Storage</p>
+        <p class="perk">2 Users Allowed</p>
+        <p class="perk">Send up to 3 GB</p>
+        <a href="#" class="btn btn-special">Learn More</a>
+      </article>
+
+      <article class="card card-special">
+        <h2 class="card-title">Professional</h2>
+        <p class="price" id="professional">$249.99</p>
+        <p class="perk perk-storage">1 TB Storage</p>
+        <p class="perk">5 Users Allowed</p>
+        <p class="perk">Send up to 10 GB</p>
+        <a href="#" class="btn">Learn More</a>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title">Master</h2>
+        <p class="price" id="master">$399.99</p>
+        <p class="perk perk-storage">2 TB Storage</p>
+        <p class="perk">10 Users Allowed</p>
+        <p class="perk">Send up to 20 GB</p>
+        <a href="#" class="btn">Learn More</a>
+      </article>
+
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+
+</html>
