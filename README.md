@@ -23,7 +23,7 @@ Users should be able to:
 
 ## What I learned
 
-I had some difficulty deciding what to do with the toggle with respect to accessibility. I wanted 'Annually' and 'Monthly' to be clickable as well as the toggle itself. I decided to make 'Annually' and 'Monthly' the labels of radio button inputs and the radio button inputs themselves visually hidden. Radio button inputs have accessibility built-in to them so I felt this was the correct choice, although it lead to some complications in the CSS and JS code.
+I had some difficulty deciding what to do with the toggle with respect to accessibility. I wanted 'Annually' and 'Monthly' to be clickable as well as the toggle itself. I decided to make 'Annually' and 'Monthly' the labels of radio button inputs and the radio button inputs themselves visually hidden. Radio button inputs have accessibility built-in to them so I felt this was the correct choice, although it led to some complications in the CSS and JS code.
 
 The toggle is clickable and has a hover state, however I added `aria-hidden="true"` to hide it from screen readers as they will be able to change the payment frequency using the radio buttons. The toggle is also not accessible via the keyboard for the same reason.
 
