@@ -43,6 +43,8 @@ body::-webkit-scrollbar-thumb {
     background: var(--clr-gray) content-box;
 }
 ```
+This custom scrollbar fits the theme of the page a little better than the default scrollbar.
+
 
 ## Continued development
 
