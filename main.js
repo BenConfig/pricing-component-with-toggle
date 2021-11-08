@@ -1,6 +1,5 @@
 const prices = document.querySelectorAll('.price');
 const frequencyRadioBtns = document.querySelectorAll('[type="radio"]');
-const frequencyLabels = document.querySelectorAll('.frequency-label');
 const frequencyToggle = document.querySelector('.frequency-toggle');
 
 const basic = {
