@@ -245,7 +245,7 @@ body::-webkit-scrollbar-thumb {
 /* -------------------- Special Card -------------------- */
 .card-special {
     color: var(--clr-white);
-    background: linear-gradient(to bottom, var(--gradient));
+    background: linear-gradient(var(--gradient));
 }
 
 .card-special > .price { color: var(--clr-white); }
