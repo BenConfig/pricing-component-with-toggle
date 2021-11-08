@@ -36,7 +36,16 @@
 * { box-sizing: border-box }
 
 body,
-h1, h2, p { margin: 0; }
+h1, h2,
+p, ul,
+fieldset { margin: 0; }
+
+ul,
+fieldset { padding: 0; }
+
+ul { list-style: none; }
+
+fieldset { border: none; }
 
 body {
     display: grid;
